@@ -46,15 +46,33 @@ const displayAll = data => {
     //     countries.appendChild(div1);
     // }
     //-------------------------------------------------------------
-    data.forEach(element => {
+    data.forEach(country => {
         const div1 = document.createElement('div');
         div1.className="countryDiv";
         const countryInfo = `
-            <h2 class="country-name">${element.name}</h2>
-            <p class="para">${element.capital}</>
-            <p class="para">${element.region}</p>
+            <h2 class="country-name">${country.name}</h2>
+            <p class="para">capital : ${country.capital}</>
+            <p class="para">region : ${country.region}</p>
+            <button onclick="displayDetails('${country.name}')">Details</button>
         `
         div1.innerHTML=countryInfo;
         countries.appendChild(div1);
     });
+}
+const displayDetails=name1=>{
+    const url =`https://restcountries.eu/rest/v2/name/${name1}`; 
+    // console.log(url);
+    fetch(url)
+    .then(response=>response.json())
+    .then(data=>displayCountryDetails(data[0]))
+}
+const displayCountryDetails=country=>{
+    const details=document.getElementById("details");
+    const putDetail=`
+        <p>populations is : ${country.population}</p>
+        <p>area is : ${country.area}</p>
+        <p>native name is : ${country.nativeName}</p>
+        <img src="${country.flag}">
+    `
+    details.innerHTML=putDetail;
 }
