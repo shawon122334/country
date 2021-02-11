@@ -1,0 +1,21 @@
+.country-name{
+    color:blueviolet;
+    
+
+}
+
+.countryDiv{
+    border:1px solid rgb(110, 100, 100);
+    border-radius: 20px;
+    margin-bottom: 5px;
+    padding:20px;
+    width:300px;
+    text-align: center;
+}
+#countries{
+    background-color: rgb(179, 179, 180);
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 10px;
+
+}
